@@ -4,7 +4,8 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import Cards from './_components/Cards/Cards'
 import { useState } from 'react'
-import { data } from "@/app/mock"
+/* import { data } from "@/app/mock"
+ */import { Users as data } from "./UserData";
 import Filter from './_components/Filter'
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
 
       <div class="h-full p-4 lg:w-1/3">
 
-        <div class=" bg-gray-100 px-8 pt-16 pb-16 relative">
+        <div class=" bg-gray-100 px-8 pt-16 pb-16 ">
           <Filter data={data} setData={setFilteredData} />
         </div>
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Modal({ showModal, setShowModal }) {
+function Modal({ showModal, setShowModal, modalData }) {
     return (
         showModal ? (
             <>
@@ -24,7 +24,7 @@ function Modal({ showModal, setShowModal }) {
                                     <div>
                                         {/* <h2 class="text-lg">Hello, I am</h2> */}
                                         <h1 class="pt-1 text-5xl font-bold text-gray-800">
-                                            Shruti Balasa
+                                            {modalData.name} {modalData.surname}
                                         </h1>
                                     </div>
                                     <p class="text-xl leading-relaxed">
@@ -33,16 +33,17 @@ function Modal({ showModal, setShowModal }) {
                                     </p>
                                     <div className='flex justify-around '>
                                         <p class="text-xl leading-relaxed mr-auto">
-                                            <span className='font-bold'>Şehir:</span> as
+                                            <span className='font-bold'>City:</span> {modalData.city}
                                         </p>
                                         <p class="text-xl leading-relaxed mr-auto">
-                                            <span className='font-bold'>Yaş:</span> as
+                                            <span className='font-bold'>Age:</span> {modalData.age}
                                         </p>
                                     </div>
 
                                     <p class="text-xl leading-relaxed ">
-                                        <span className='font-bold'>İş:</span> as
+                                        <span className='font-bold'>School:</span> {modalData.school_name}
                                     </p>
+
 
 
                                     <div className='flex justify-between'>
@@ -56,14 +57,14 @@ function Modal({ showModal, setShowModal }) {
                                                     <a href="tel:+31620842105" class="inline-block h-12 -my-4 xs:h-auto underline hover:no-underline">
                                                         <svg class="inline-block w-4 h-4 mr-3 opacity-40" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                                        </svg>+44 1337 420
+                                                        </svg>{modalData.phone}
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <svg class="inline-block w-4 h-4 mr-3 opacity-40" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                                     </svg>
-                                                    <a class="inline-block h-12 -my-4 xs:h-auto underline hover:no-underline" href="mailto:john@doe.com">john@doe.com</a>
+                                                    <a class="inline-block h-12 -my-4 xs:h-auto underline hover:no-underline" href="mailto:john@doe.com">{modalData.email}</a>
                                                 </li>
                                                 <li>
                                                     <svg class="inline-block w-4 h-3 mr-3 -mt-1 opacity-40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -90,11 +91,12 @@ function Modal({ showModal, setShowModal }) {
             font-medium
           "
                                             >
-                                                <a href="#" class="m-1 px-2 py-1 rounded bg-green-500"> #online </a>
-                                                <a href="#" class="m-1 px-2 py-1 rounded bg-green-500"> #internet </a>
-                                                <a href="#" class="m-1 px-2 py-1 rounded bg-green-500">
-                                                    #education
-                                                </a>
+
+                                                {modalData.hobbies.slice(0, 3).map(hobby => (
+                                                    <a href="#" class="m-1 px-2 py-1 rounded bg-green-500"> #{hobby} </a>
+
+                                                ))}
+
                                             </div>
                                         </div>
 
@@ -106,18 +108,23 @@ function Modal({ showModal, setShowModal }) {
                                         <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
                                             <div class="instagram metric-card bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full" >
                                                 <a aria-label="Unsplash Downloads" target="_blank" rel="noopener noreferrer" href="https://stackdiary.com/">
-                                                    <div class="flex items-center text-gray-900 dark:text-gray-100" >İnstagram Followers
+                                                    <div class="flex items-center text-gray-900 dark:text-gray-100" >
+                                                        Instagram Followers
                                                         <svg class="h-4 w-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                                                         </svg>
                                                     </div>
                                                 </a>
-                                                <p class="mt-2 text-3xl font-bold spacing-sm text-black dark:text-white" >5,412</p>
+                                                <p class="mt-2 text-3xl font-bold spacing-sm text-black dark:text-white" >
+                                                    {modalData.insta.followers}
+                                                </p>
                                                 <div class="flex items-center text-gray-900 mt-2" >
                                                     Instagram Avarage Like
                                                 </div>
 
-                                                <p class="mt-2 text-3xl font-bold spacing-sm text-black dark:text-white" >3,641</p>
+                                                <p class="mt-2 text-3xl font-bold spacing-sm text-black dark:text-white" >
+                                                    {modalData.insta.average_like}
+                                                </p>
                                             </div>
                                             <div class="tiktok metric-card dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full" >
                                                 <a aria-label="Unsplash Views" target="_blank" rel="noopener noreferrer" href="https://stackdiary.com/">
@@ -127,13 +134,13 @@ function Modal({ showModal, setShowModal }) {
                                                         </svg>
                                                     </div>
                                                 </a>
-                                                <p class="mt-2 text-3xl font-bold spacing-sm text-white dark:text-white" >3,641</p>
+                                                <p class="mt-2 text-3xl font-bold spacing-sm text-white dark:text-white" >{modalData.tiktok.followers}</p>
 
                                                 <div class="flex items-center text-gray-100 mt-2" >
                                                     Tiktok Avarage Like
                                                 </div>
 
-                                                <p class="mt-2 text-3xl font-bold spacing-sm text-white dark:text-white" >3,641</p>
+                                                <p class="mt-2 text-3xl font-bold spacing-sm text-white dark:text-white" >{modalData.insta.average_like}</p>
                                             </div>
                                         </div>
                                         <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
