@@ -1,20 +1,32 @@
 import React, { useEffect } from 'react'
 import MultiRangeSlider from './Slider/MultiRangeSlider';
+import { MultiSelect } from 'react-multi-select-component';
+
+
+
+const multiSelectOptions = [
+    { label: "Traveling", value: "Traveling" },
+    { label: "Photography", value: "Photography" },
+    { label: "Dancing", value: "Dancing" },
+    { label: "Painting", value: "Painting" },
+
+];
+
+
 
 function Filter({ data, setData }) {
-    const [location, setLocation] = React.useState("All");
+    const [multiSelected, setMultiSelected] = React.useState([]);
+
     const [name, setName] = React.useState("");
     const [ageMin, setAgeMin] = React.useState();
     const [ageMax, setAgeMax] = React.useState();
     const [followers, setFollowers] = React.useState("All");
-    const [type, setType] = React.useState("All");
+
     const [gender, setGender] = React.useState("All");
 
     //   const [search, setSearch] = React.useState("");
 
-    const handlelocationChange = (event) => {
-        setLocation(event.target.value);
-    };
+
     const handleNameChange = (event) => {
         setName(event.target.value);
     };
@@ -25,20 +37,29 @@ function Filter({ data, setData }) {
     const handleFollowersChange = (event) => {
         setFollowers(event.target.value);
     };
-    const handletypeChange = (event) => {
-        setType(event.target.value);
-    };
+
 
 
 
 
 
     useEffect(() => {
+
         let filteredData = data;
 
-        if (location !== "All") {
-            filteredData = filteredData.filter((el) => el.location === location);
+        const multiArr = multiSelected.map(item => item.value)
+
+
+
+        if (multiArr.length > 0) {
+            filteredData = filteredData.filter((el) => {
+                return multiArr.some(r => el.hobbies.includes(r))
+
+
+            }
+            );
         }
+
 
         filteredData = filteredData.filter((el) => {
 
@@ -72,22 +93,34 @@ function Filter({ data, setData }) {
             });
         }
 
-        if (type !== "All") {
-            filteredData = filteredData.filter((el) => el.type === type);
-        }
+
         if (gender !== "All") {
             filteredData = filteredData.filter((el) => el.gender === gender);
         }
 
         setData(filteredData);
-    }, [location, name, type, followers, ageMin, ageMax, gender]);
+    }, [name, followers, ageMin, ageMax, gender, multiSelected]);
 
     return (
         <div>
             <div className='flex flex-col items-center '>
+                <div>
+                    <label for="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hobbies</label>
+
+
+                    <MultiSelect
+                        className='w-56 border rounded-lg border-gray-300 text-gray-600  bg-white hover:border-gray-400 focus:outline-none appearance-none'
+                        options={multiSelectOptions}
+                        value={multiSelected}
+                        onChange={setMultiSelected}
+                        labelledBy="Select"
+                    />
+                </div>
+
+
                 <div className="mb-5">
                     <label for="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                    <input value={name} onChange={handleNameChange} type="name" id="name" className="bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500  w-56 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
+                    <input value={name} onChange={handleNameChange} type="name" id="name" className="bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500  w-56 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                 </div>
                 <div className="mb-5">
                     <label for="gender" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>

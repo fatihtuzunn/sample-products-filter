@@ -1,11 +1,10 @@
 "use client"
 
 import Image from 'next/image'
-import styles from './page.module.css'
 import Cards from './_components/Cards/Cards'
 import { useState } from 'react'
 /* import { data } from "@/app/mock"
- */import { Users as data } from "./UserData";
+ */import { Users as data } from "./_utils/UserData";
 import Filter from './_components/Filter'
 
 export default function Home() {

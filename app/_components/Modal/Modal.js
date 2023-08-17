@@ -27,10 +27,10 @@ function Modal({ showModal, setShowModal, modalData }) {
                                             {modalData.name} {modalData.surname}
                                         </h1>
                                     </div>
-                                    <p class="text-xl leading-relaxed">
+                                    {/*  <p class="text-xl leading-relaxed">
                                         Full-stack web developer who crafts beautiful
                                         websites that help your business grow online
-                                    </p>
+                                    </p> */}
                                     <div className='flex justify-around '>
                                         <p class="text-xl leading-relaxed mr-auto">
                                             <span className='font-bold'>City:</span> {modalData.city}
@@ -169,19 +169,19 @@ function Modal({ showModal, setShowModal, modalData }) {
 
 
                                 </div>
-                                <div>
+                                <div >
                                     <img
-                                        src="https://5.imimg.com/data5/SELLER/Default/2020/12/GT/AM/NY/117268287/best-apartments-and-flats-construction-company-in-india-500x500.jpg"
+                                        src={modalData.insta.profile_pic}
                                         alt=""
                                         style={{ width: "250px", height: "200px" }}
                                         class="flex-shrink-0 rounded-full border-6 border-white shadow-md"
                                     />
                                     <button
-                                        className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        className="mt-96 ml-12 bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                         type="button"
                                         onClick={() => setShowModal(false)}
                                     >
-                                        Save Changes
+                                        Save
                                     </button>
                                 </div>
 
