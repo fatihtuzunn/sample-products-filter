@@ -20,7 +20,7 @@ const Cards = ({ data }) => {
             <div className="  flex flex-wrap">
                 {data.map(item => (
 
-                    <a onClick={() => handleClick(item)} className="h-full p-4 lg:w-1/3">
+                    <a key={item} onClick={() => handleClick(item)} className="h-full p-4 lg:w-1/3">
                         <Card item={item} />
                     </a>
                 ))}
