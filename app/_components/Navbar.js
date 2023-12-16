@@ -5,8 +5,8 @@ const Navbar = () => {
 
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div style={{ boxShadow: "0 10px 30px hsla(0,0%,65.9%,.1)", width: "92%" }} className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="https://teamfluencer.co/" className="flex items-center">
-                    <img src="https://teamfluencer.co/en/images/teamfluencer.webp" className="h-8 mr-3" alt=" Logo" />
+                <a href="#" className="flex items-center">
+                    F471H
                 </a>
                 <div className="flex items-center md:order-2">
                     <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
